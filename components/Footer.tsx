@@ -1,5 +1,4 @@
-
-import { connection } from 'next/server';
+import { connection } from "next/server";
 
 export default async function Footer() {
   await connection();
