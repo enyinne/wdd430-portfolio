@@ -1,29 +1,10 @@
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  type: 'opensource' | 'school';
-  technologies: string[];
-  link?: string;
-}
+import { getProjects } from '@/lib/projects-db';
 
 export const instant = false;
 
 export default async function ProjectsPage() {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000';
-
-  const response = await fetch(`${baseUrl}/api/projects`, {
-    cache: 'no-store',
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch projects');
-  }
-
-  const projects: Project[] = await response.json();
+  const projects = await getProjects();
 
   return (
     <main className="container mx-auto px-4 py-8">
