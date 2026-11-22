@@ -7,6 +7,8 @@ interface Project {
   link?: string;
 }
 
+export const instant = false;
+
 export default async function OpenSourceProjectsPage() {
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
